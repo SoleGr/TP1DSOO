@@ -9,19 +9,20 @@ namespace TP1
     public class ActividadDeportiva
     {
         public string Nombre { get; private set; }
-        private int cupoTotal;
         public int CuposDisponibles { get; private set; }
 
         public ActividadDeportiva(string nombre, int cupoTotal)
         {
             Nombre = nombre;
-            this.cupoTotal = cupoTotal;
             CuposDisponibles = cupoTotal;
         }
 
         public void ActualizarCupo()
         {
-                this.CuposDisponibles--;
+            if (TieneCupo())
+            {
+                CuposDisponibles--;
+            }
         }
 
         public bool TieneCupo()

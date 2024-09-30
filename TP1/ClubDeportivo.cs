@@ -17,7 +17,8 @@ namespace TP1
             {
                 socios.Add(new Socio(nombre, id));
                 return "REGISTRO DE SOCIO EXITOSO";
-            } else
+            } 
+            else
             {
                 return "EL SOCIO YA SE ENCUENTRA REGISTRADO";  
             }
@@ -25,11 +26,12 @@ namespace TP1
 
         public string AltaActividad(string nombre, int cupoTotal)
         {
-            if (!this.actividades.Any(s => s.Nombre == nombre))
+            if (!actividades.Any(s => s.Nombre == nombre))
             {
-                this.actividades.Add(new ActividadDeportiva(nombre, cupoTotal));
+                actividades.Add(new ActividadDeportiva(nombre, cupoTotal));
                 return "REGISTRO DE ACTIVIDAD EXITOSO";
-            } else
+            } 
+            else
             {
                 return "LA ACTIVIDAD YA SE ENCUENTRA REGISTRADA";
             }
@@ -38,8 +40,8 @@ namespace TP1
 
         public string InscribirSocioEnActividad(int id, string nombreActividad)
         {
-            var socio = this.socios.FirstOrDefault(s => s.NumeroIdentificacion == id);
-            var actividad = this.actividades.FirstOrDefault(a => a.Nombre == nombreActividad);
+            var socio = socios.FirstOrDefault(s => s.NumeroIdentificacion == id);
+            var actividad = actividades.FirstOrDefault(a => a.Nombre == nombreActividad);
 
             if (socio == null)
             {
@@ -54,11 +56,12 @@ namespace TP1
             if (!socio.TieneCupo())
             {
                 return "TOPE DE ACTIVIDADES POR SOCIO ALCANZADO";
-            } else if (!actividad.TieneCupo())
+            } 
+            else if (!actividad.TieneCupo())
             {
                 return "CUPO DE LA ACTIVIDAD AGOTADO";  
-            } else
-
+            } 
+            else
             {
                 socio.AgregarActividad(actividad);
                 actividad.ActualizarCupo();
